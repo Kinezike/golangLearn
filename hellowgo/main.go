@@ -1,6 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"math"
+)
+
+type Programmer struct {
+	Name     string
+	Age      int
+	Job      string
+	Language []string
+}
+
+func sum(a, b int) int {
+	return a + b
+}
+
+// 2. 多返回值 - 无名返回值
+func Div(a, b float64) (float64, error) {
+	if b == 0 {
+		return math.NaN(), errors.New("0不能作为除数")
+	}
+	return a / b, nil
+}
+
+func NamedSum(a, b int) (ans int) {
+	return a + b
+}
 
 func main() {
 	fmt.Printf("hellow")
@@ -37,4 +64,20 @@ func main() {
 	fmt.Println(mp)
 	fmt.Println(mp["a"])
 	fmt.Println(mp["g"])
+
+	newintprint := new(int)
+	fmt.Println(newintprint)
+
+	programmer := Programmer{
+		Name:     "jack",
+		Age:      19,
+		Job:      "coder",
+		Language: []string{"Go", "C++"},
+	}
+
+	fmt.Println(programmer)
+	c := sum(1, 2)
+	fmt.Println(c)
+	fmt.Println(NamedSum(1, 2))
+	fmt.Println(sum(1, 2))
 }
