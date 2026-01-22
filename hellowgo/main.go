@@ -1,9 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
+	"hellowgo/example"
+	"hellowgo/structlearning"
 	"math"
+	"os"
 )
 
 type Programmer struct {
@@ -27,6 +31,70 @@ func Div(a, b float64) (float64, error) {
 
 func NamedSum(a, b int) (ans int) {
 	return a + b
+}
+
+func printlearn() {
+	res := example.SayHello("Go") // 通过包名调用函数
+	fmt.Println(res)
+}
+
+func bufiolearn() {
+	/* 缓冲 */
+
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	fmt.Println(scanner.Text())
+}
+
+func structlearn() {
+	/* struct学习 */
+	v1 := structlearning.Person{
+		Name: "mike",
+		Age:  10,
+	}
+	fmt.Printf("%+v", v1)
+}
+
+func inputlearn() {
+	/* 输入 */
+	var s1, s2 string
+	fmt.Scan(&s1, &s2)
+	fmt.Print(s1, s2)
+}
+
+func ifelselearn() {
+	a, b := 2, 2
+	if a < b {
+		fmt.Print("a < b")
+	} else if a == b {
+		fmt.Print("a = b")
+	} else {
+		fmt.Print("a > b")
+	}
+
+	str := "a"
+	switch str {
+	case "a":
+		str += "a"
+		str += "c"
+	case "b":
+		str += "bb"
+		str += "aaaa"
+	default: // 当所有case都不匹配后，就会执行default分支
+		str += "CCCC"
+	}
+	fmt.Println(str)
+}
+
+func forlearn() {
+	/* for i := 0; i <= 20; i++ {
+		fmt.Println(i)
+	} */
+
+	sequence := "hello world"
+	for index, value := range sequence {
+		fmt.Println(index, value)
+	}
 }
 
 func main() {
