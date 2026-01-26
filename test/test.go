@@ -10,6 +10,19 @@ func createAdder(base int) func(int) int {
 	}
 }
 
+func Adder(base int) func(int) int {
+	return func(x int) int {
+		return base + x
+	}
+}
+
+func Do() {
+	defer func() {
+		fmt.Println("1")
+	}()
+	fmt.Println("2")
+}
+
 func main() {
 	// 构造两个不同的闭包实例（分别捕获 base=5 和 base=10）
 	add5 := createAdder(5)   // 闭包1：捕获 base=5
@@ -19,4 +32,11 @@ func main() {
 	fmt.Println(add5(3))  // 5+3=8
 	fmt.Println(add5(7))  // 5+7=12
 	fmt.Println(add10(3)) // 10+3=13
+
+	add1 := Adder(1)
+	add2 := Adder(2)
+	fmt.Println(add1(1))
+	fmt.Println(add2(1))
+
+	Do()
 }
