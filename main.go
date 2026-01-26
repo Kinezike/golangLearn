@@ -97,9 +97,41 @@ func forlearn() {
 	}
 }
 
-func Sum(a, b int) (ans int) {
+/****************************************************************/
+func Sum(a, b int) int {
 	return a + b
 }
+
+func Sum1(a, b int) (ans int) {
+	ans = a + b
+	return
+}
+
+/****************************************************************/
+
+// 命名返回值：sum 和 avg 是返回值别名
+func calcSumAvg(nums []int) (sum int, avg float64) {
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	sum = total // 直接为命名返回值赋值
+	avg = float64(total) / float64(len(nums))
+	return // 隐式返回 sum 和 avg（无需写 return sum, avg）
+}
+
+func process() (result int) { // result 是命名返回值（别名）
+	defer func() {
+		if result < 100 {
+			result = 100 // defer 中修改命名返回值
+		}
+	}()
+
+	result = 50 // 初始赋值
+	return      // 最终返回被 defer 修改为 100
+}
+
+//可以直接使用defer在函数体当中去修改返回值
 
 func main() {
 	fmt.Printf("hellow")
