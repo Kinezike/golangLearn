@@ -137,3 +137,6 @@ func (p Programmer) Sayhi(alice string) (ans int) {
 	fmt.Println("hello,i`m", p.Name, alice)
 	return
 }
+func SumT[T int | float64](a, b T) T {
+	return a + b
+}

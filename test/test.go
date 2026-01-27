@@ -27,3 +27,7 @@ func Do() {
 	}()
 	fmt.Println("2")
 }
+
+type Logger interface {
+	Log(string)
+}
