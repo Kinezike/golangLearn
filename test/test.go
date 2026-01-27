@@ -1,6 +1,11 @@
-package main
+package test
 
 import "fmt"
+
+type Person interface {
+	Say(string) string
+	Walk(int)
+}
 
 // 外部函数：接收一个参数 base（环境的一部分）
 func createAdder(base int) func(int) int {
@@ -21,22 +26,4 @@ func Do() {
 		fmt.Println("1")
 	}()
 	fmt.Println("2")
-}
-
-func main() {
-	// 构造两个不同的闭包实例（分别捕获 base=5 和 base=10）
-	add5 := createAdder(5)   // 闭包1：捕获 base=5
-	add10 := createAdder(10) // 闭包2：捕获 base=10
-
-	// 调用闭包：每个闭包使用自己捕获的 base
-	fmt.Println(add5(3))  // 5+3=8
-	fmt.Println(add5(7))  // 5+7=12
-	fmt.Println(add10(3)) // 10+3=13
-
-	add1 := Adder(1)
-	add2 := Adder(2)
-	fmt.Println(add1(1))
-	fmt.Println(add2(1))
-
-	Do()
 }

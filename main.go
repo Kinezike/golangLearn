@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"hellowgo/interfacelearn"
 	"hellowgo/utils"
 )
 
@@ -64,4 +65,7 @@ func main() {
 	}
 	nu := p.Sayhi("alice")
 	fmt.Println(nu)
+
+	conpany := interfacelearn.ConstructionCompany{interfacelearn.CraneA{}}
+	conpany.Build()
 }
