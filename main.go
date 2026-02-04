@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"hellowgo/chanlearn"
+	"hellowgo/test"
+	/*"hellowgo/goroutinelearn"
 	"hellowgo/interfacelearn"
-	"hellowgo/utils"
-)
+	"hellowgo/utils"*/)
 
 func main() {
-	fmt.Printf("hellow")
+	/*fmt.Printf("hellow")
 	nums := [5]int{1, 2, 3}
 
 	fmt.Println(nums[0])
@@ -68,4 +70,34 @@ func main() {
 
 	conpany := interfacelearn.ConstructionCompany{interfacelearn.CraneA{}}
 	conpany.Build()
+
+	go goroutinelearn.Say("world")
+	goroutinelearn.Say("hello")*/
+
+	fmt.Println("________________********************_______________________")
+
+	ch := make(chan int)
+	go chanlearn.Send(ch)
+	val := <-ch
+	fmt.Println(val)
+
+	vhh := make(chan int, 10)
+	fmt.Println(cap(vhh))
+	go chanlearn.Fibonacci1(cap(vhh), vhh)
+	for i := range vhh {
+		fmt.Println(i)
+	}
+
+	chh := make(chan int)
+	quit := make(chan int)
+	go func() {
+		for i := 0; i < 10; i++ {
+			fmt.Printf("%d", <-chh)
+
+		}
+		quit <- 0
+	}()
+	chanlearn.Fibonacci2(chh, quit)
+
+	test.TEst()
 }
