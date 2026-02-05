@@ -17,6 +17,8 @@ type Programmer struct {
 	Language []string
 }
 
+type GenericSlice[T int | int32 | int64] []T
+
 func Sum2(a, b int) int {
 	return a + b
 }
@@ -137,6 +139,7 @@ func (p Programmer) Sayhi(alice string) (ans int) {
 	fmt.Println("hello,i`m", p.Name, alice)
 	return
 }
+
 func SumT[T int | float64](a, b T) T {
 	return a + b
 }
