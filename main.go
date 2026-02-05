@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"hellowgo/chanlearn"
+	"hellowgo/test"
+	/*"hellowgo/goroutinelearn"
 	"hellowgo/interfacelearn"
-	"hellowgo/utils"
-)
+	"hellowgo/utils"*/)
 
 func main() {
-	fmt.Printf("hellow")
+	/*fmt.Printf("hellow")
 	nums := [5]int{1, 2, 3}
 
 	fmt.Println(nums[0])
@@ -68,5 +70,4 @@ func main() {
 
 	conpany := interfacelearn.ConstructionCompany{interfacelearn.CraneA{}}
 	conpany.Build()
-
 }
